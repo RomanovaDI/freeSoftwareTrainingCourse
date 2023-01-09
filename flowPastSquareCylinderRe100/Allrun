@@ -1,0 +1,11 @@
+#!/bin/sh
+cd "${0%/*}" || exit                         # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions # Tutorial run functions
+#------------------------------------------------------------------------------
+
+touch flowPastSquareCylinderRe100.foam # Создаем файл для визуализации
+runApplication blockMesh               # Создаем сетку
+restore0dir                            # Создаем нулевой момент
+runApplication $(getApplication)       # Запускаем расчёт
+
+#------------------------------------------------------------------------------

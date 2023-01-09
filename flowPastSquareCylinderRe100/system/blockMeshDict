@@ -1,0 +1,122 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2112                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+scale   1.0;
+
+DHalf   0.5;
+HHalf   15.5;
+LLHalf  15.5;
+LRHalf  65.5;
+BHalf   0.1;
+nB      1;
+nD      5;
+nHHalf  75;
+nLLHalf 75;
+nLRHalf 325;
+
+vertices
+(
+    (-$LLHalf -$HHalf  $BHalf) // 0
+    (-$LLHalf -$HHalf -$BHalf) // 1
+    (-$DHalf  -$HHalf  $BHalf) // 2
+    (-$DHalf  -$HHalf -$BHalf) // 3
+    ( $DHalf  -$HHalf  $BHalf) // 4
+    ( $DHalf  -$HHalf -$BHalf) // 5
+    ( $LRHalf -$HHalf  $BHalf) // 6
+    ( $LRHalf -$HHalf -$BHalf) // 7
+    (-$LLHalf -$DHalf  $BHalf) // 8
+    (-$LLHalf -$DHalf -$BHalf) // 9
+    (-$DHalf  -$DHalf  $BHalf) // 10
+    (-$DHalf  -$DHalf -$BHalf) // 11
+    ( $DHalf  -$DHalf  $BHalf) // 12
+    ( $DHalf  -$DHalf -$BHalf) // 13
+    ( $LRHalf -$DHalf  $BHalf) // 14
+    ( $LRHalf -$DHalf -$BHalf) // 15
+    (-$LLHalf  $DHalf  $BHalf) // 16
+    (-$LLHalf  $DHalf -$BHalf) // 17
+    (-$DHalf   $DHalf  $BHalf) // 18
+    (-$DHalf   $DHalf -$BHalf) // 19
+    ( $DHalf   $DHalf  $BHalf) // 20
+    ( $DHalf   $DHalf -$BHalf) // 21
+    ( $LRHalf  $DHalf  $BHalf) // 22
+    ( $LRHalf  $DHalf -$BHalf) // 23
+    (-$LLHalf  $HHalf  $BHalf) // 24
+    (-$LLHalf  $HHalf -$BHalf) // 25
+    (-$DHalf   $HHalf  $BHalf) // 26
+    (-$DHalf   $HHalf -$BHalf) // 27
+    ( $DHalf   $HHalf  $BHalf) // 28
+    ( $DHalf   $HHalf -$BHalf) // 29
+    ( $LRHalf  $HHalf  $BHalf) // 30
+    ( $LRHalf  $HHalf -$BHalf) // 31
+);
+
+blocks
+(
+    hex (1 3 11 9 0 2 10 8) ($nLLHalf $nHHalf $nB) simpleGrading (1 1 1)
+    hex (3 5 13 11 2 4 12 10) ($nD $nHHalf $nB) simpleGrading (1 1 1)
+    hex (5 7 15 13 4 6 14 12) ($nLRHalf $nHHalf $nB) simpleGrading (1 1 1)
+    hex (9 11 19 17 8 10 18 16) ($nLLHalf $nD $nB) simpleGrading (1 1 1)
+    hex (13 15 23 21 12 14 22 20) ($nLRHalf $nD $nB) simpleGrading (1 1 1)
+    hex (17 19 27 25 16 18 26 24) ($nLLHalf $nHHalf $nB) simpleGrading (1 1 1)
+    hex (19 21 29 27 18 20 28 26) ($nD $nHHalf $nB) simpleGrading (1 1 1)
+    hex (21 23 31 29 20 22 30 28) ($nLRHalf $nHHalf $nB) simpleGrading (1 1 1)
+);
+
+edges
+(
+);
+
+boundary
+(
+    inlet
+    {
+        type patch;
+        faces
+        (
+            (0 8 9 1)
+            (8 16 17 9)
+			(16 24 25 17)
+        );
+    }
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (6 7 15 14)
+            (14 15 23 22)
+			(22 23 31 30)
+        );
+    }
+	hole
+    {
+        type wall;
+        faces
+        (
+            (10 11 19 18)
+            (18 19 21 20)
+            (12 20 21 13)
+            (10 12 13 11)
+        );
+    }
+);
+
+mergePatchPairs
+(
+);
+
+
+// ************************************************************************* //

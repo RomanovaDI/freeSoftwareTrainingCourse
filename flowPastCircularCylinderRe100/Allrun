@@ -1,0 +1,15 @@
+#!/bin/sh
+cd "${0%/*}" || exit                         # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions # Tutorial run functions
+#------------------------------------------------------------------------------
+
+touch Re1000.foam                # Создаем файл для визуализации
+runApplication blockMesh         # Создаем сетку для верхней половины
+runApplication mirrorMesh        # Зеркально отражаем сетку
+rm -rf constant/polyMesh         # Удаляем половинку сетки
+mv 0.004/polyMesh constant/      # Полную сетку кладем на место сетки
+rm -rf 0.004                     # Удаляем лишнюю директорию
+restore0dir                      # Создаем нулевой момент
+runApplication $(getApplication) # Запускаем расчёт
+
+#------------------------------------------------------------------------------
