@@ -35,16 +35,14 @@ boundaryField
     outlet
     {
         type            zeroGradient;
-     //  value           uniform 0;
-    //    inletValue      uniform (0 0 0);
     }
-
-    "(top|bottom|down|walls)"
+    
+    topAndBottom
     {
         type            zeroGradient;
     }
     
-    "(frontAndBack|defaultFaces)"
+    defaultFaces
     {
         type            empty;
     }

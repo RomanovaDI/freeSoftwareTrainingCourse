@@ -5,7 +5,7 @@ cd "${0%/*}" || exit                         # Run from this directory
 
 touch flowPastSquareCylinderRe100.foam # Создаем файл для визуализации
 runApplication blockMesh               # Создаем сетку
-restore0dir                            # Создаем нулевой момент
+restore0Dir                            # Создаем нулевой момент
 runApplication $(getApplication)       # Запускаем расчёт
 
 #------------------------------------------------------------------------------

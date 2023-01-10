@@ -112,6 +112,19 @@ boundary
             (10 12 13 11)
         );
     }
+	topAndBottom
+    {
+        type wall;
+        faces
+        (
+            (24 26 27 25)
+            (26 28 29 27)
+            (28 30 31 29)
+            (0 1 3 2)
+			(2 3 5 4)
+			(4 5 7 6)
+        );
+    }
 );
 
 mergePatchPairs

@@ -36,12 +36,12 @@ boundaryField
         value           uniform 0;
     }
 
-    "(top|bottom|down|walls)"
+    topAndBottom
     {
         type            zeroGradient;
     }
 
-    "(frontAndBack|defaultFaces)"
+    defaultFaces
     {
         type            empty;
     }
