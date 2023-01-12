@@ -20,7 +20,7 @@ DHalf   0.5;
 HHalf   15.5;
 LLHalf  15.5;
 LRHalf  65.5;
-BHalf   0.1;
+BHalf   0.5;
 nB      1;
 nD      5;
 nHHalf  75;

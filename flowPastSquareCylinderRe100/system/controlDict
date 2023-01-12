@@ -31,8 +31,6 @@ writeControl    timeStep;
 
 writeInterval   25;// 2500; // every 10s
 
-//purgeWrite      50;
-
 writeFormat     binary;
 
 writePrecision  8;
@@ -53,14 +51,13 @@ functions
         type            forces;
         libs            (forces);
         writeControl    writeTime;
-        timeStart       1;
 
         patches         (hole);
-        CofR            (0.20 0.15 -0.01);
+        CofR            (0 0 0); // Centre of rotation for moment calculations
         writeFields     yes;
 
         rho             rhoInf;
-        rhoInf          1.2;
+        rhoInf          1.0;
     }
     
     #include "forceCoeffs"

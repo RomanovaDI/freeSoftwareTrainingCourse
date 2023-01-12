@@ -19,22 +19,14 @@ forceCoeffs1
 
     patches         (hole);
     rho             rhoInf;      // Indicates incompressible
-    rhoInf          1.2;           // Required when rho = rhoInf
+    rhoInf          1.0;           // Required when rho = rhoInf
     liftDir         (0 1 0);
     dragDir         (1 0 0);
-    CofR            (1 1.5 0);  // Axle midpoint on ground
+    CofR            (0 0 0);  // Axle midpoint on ground
     pitchAxis       (0 0 1);
     magUInf         1;
     lRef            1;        // Wheelbase length
     Aref            1;        // Estimated
-    /*
-    binData
-    {
-        nBin        20;          // output data into 20 bins
-        direction   (1 0 0);     // bin direction
-        cumulative  yes;
-    }
-    */
 }
 
 
