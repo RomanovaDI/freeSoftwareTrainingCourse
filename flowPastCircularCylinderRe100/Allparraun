@@ -10,6 +10,7 @@ rm -rf constant/polyMesh         # Удаляем половинку сетки
 mv 0.004/polyMesh constant/      # Полную сетку кладем на место сетки
 rm -rf 0.004                     # Удаляем лишнюю директорию
 restore0Dir                      # Создаем нулевой момент
-runApplication $(getApplication) # Запускаем расчёт
+runApplication decomposePar      # Декомпозиция расчётной области
+runParallel $(getApplication)    # Запускаем расчёт в параллели
 
 #------------------------------------------------------------------------------
