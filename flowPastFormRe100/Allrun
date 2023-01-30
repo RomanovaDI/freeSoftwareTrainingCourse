@@ -1,0 +1,28 @@
+#!/bin/sh
+cd "${0%/*}" || exit                         # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions # Tutorial run functions
+#------------------------------------------------------------------------------
+
+touch flowPastSphereRe100.foam # Создаем файл для визуализации
+
+runApplication surfaceFeatureExtract
+runApplication blockMesh
+
+##- Serial run
+#surfaceFeatureExtract - includedAngle 150 sphere_ascii.stl features
+runApplication snappyHexMesh -overwrite
+runApplication checkMesh -allTopology -allGeometry
+restore0Dir
+runApplication $(getApplication)       # Запускаем расчёт
+python3 CdCl.py
+
+#- Parallel run
+#runParallel -s decompose redistributePar -decompose -constant
+#runParallel snappyHexMesh -overwrite
+#runParallel checkMesh -allTopology -allGeometry
+## runParallel -s redistrib redistributePar -constant
+#restore0Dir -processor
+#runParallel $(getApplication)       # Запускаем расчёт
+##runApplication reconstructParMesh -constant
+
+#------------------------------------------------------------------------------
