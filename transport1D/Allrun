@@ -1,0 +1,12 @@
+#!/bin/sh
+cd "${0%/*}" || exit                         # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions # Tutorial run functions
+#------------------------------------------------------------------------------
+
+touch foam.foam 					# Создаем файл для визуализации
+restore0Dir                         # Создаем нулевой момент
+runApplication blockMesh            # Создаем сетку
+runApplication setFields			# Задаём начальные условия
+runApplication $(getApplication)    # Запускаем расчёт
+
+#------------------------------------------------------------------------------
