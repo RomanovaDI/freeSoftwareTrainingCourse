@@ -17,11 +17,11 @@ FoamFile
 scale   1.0;
 
 H       1;
-L       10;
+L       100;
 B       1;
 nB      1;
 nH      1;
-nL      10;
+nL      100;
 
 vertices
 (
